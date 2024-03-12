@@ -1,7 +1,7 @@
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void EndGame(int player1Score, int player2Score)
     {
         screenEndGame.SetActive(true);
-        PlayerWin();
+        PlayerWin(player1Score, player2Score);
         string winner = SaveController.Instance.GetName(player1Score > player2Score);
         SaveController.Instance.SaveWinner(winner);
         Invoke("LoadMenu", 2f);
@@ -85,15 +85,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    private void PlayerWin()
+    private void PlayerWin(int player1Score, int player2Score)
     {
          if (player1Score > player2Score)
         {
-            textEndGame.text = "Vitória do jogador " + SaveController.Instance.GetName(true);
+            textEndGame.text = "Vitória do Jogador: " + SaveController.Instance.GetName(true);
         }
         else
         {
-            textEndGame.text = "Vitória do jogador " + SaveController.Instance.GetName(false);
+            textEndGame.text = "Vitória do Jogador: " + SaveController.Instance.GetName(false);
         }
     }
 

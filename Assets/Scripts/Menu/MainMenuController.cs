@@ -14,7 +14,7 @@ public class MainMenuController : MonoBehaviour
 
          if (lastWinner != "")
          {
-            uiWinner.text = "Ultimo vencedor: " + lastWinner;
+            uiWinner.text = "ULTIMO VENCEDOR: " + lastWinner;
          }
          else
          {
